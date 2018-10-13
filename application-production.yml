@@ -1,24 +1,18 @@
 spring:
-  redis:
-    timeout: 10000
-    database: 0
-    host: 127.0.0.1
-    password: zhang123
-    port: 6379
-  datasource:
-    url: jdbc:mysql://localhost:3306/lvnkdb?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf-8		
-    username: root
-    password: root  
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: true
     hibernate:
-      ddl-auto: update  
-  #服务名称
+      ddl-auto: update
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/lvnkdb
+      username: root
+      password: root
   application:
     name: springcloud-provider-config
   profiles:
-    active: dev
+    active: production
 logging:
   level:
     root: info
@@ -26,6 +20,5 @@ logging:
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
     org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
     com.yasaka.stock : debug
-#端口号  
 server:
   port: 8100
